@@ -1,15 +1,15 @@
 package com.javaguru.shoppinglist.service.validation;
 
 import com.javaguru.shoppinglist.domain.Product;
-import com.javaguru.shoppinglist.repository.ProductInMemoryRepository;
+import com.javaguru.shoppinglist.repository.HibernateProductRepository;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ProductNameValidationRule implements ProductValidationRule {
 
-    private ProductInMemoryRepository repository;
+    private HibernateProductRepository repository;
 
-    public ProductNameValidationRule(ProductInMemoryRepository repository) {
+    public ProductNameValidationRule(HibernateProductRepository repository) {
         this.repository = repository;
     }
 

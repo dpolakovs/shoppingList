@@ -18,11 +18,11 @@ class ConsoleUiConfiguration {
     private final Action exitAction;
 
     @Autowired
-    public ConsoleUiConfiguration(Action createProductAction,
-                                  Action findProductByIdAction,
-                                  Action changeProductNameAction,
-                                  Action changeProductPriceAction,
-                                  Action deleteProductAction,
+    public ConsoleUiConfiguration(Action createProductAction ,
+                                  Action findProductByIdAction ,
+                                  Action changeProductNameAction ,
+                                  Action changeProductPriceAction ,
+                                  Action deleteProductAction ,
                                   Action exitAction) {
         this.createProductAction = createProductAction;
         this.findProductByIdAction = findProductByIdAction;
@@ -36,12 +36,12 @@ class ConsoleUiConfiguration {
     @Bean
     ConsoleUi consoleUi() {
         List<Action> actions = new ArrayList<> ();
-        actions.add(createProductAction);
-        actions.add(findProductByIdAction);
-        actions.add(changeProductNameAction);
-        actions.add(changeProductPriceAction);
-        actions.add(deleteProductAction);
-        actions.add(exitAction);
-        return new ConsoleUi(actions);
+        actions.add ( createProductAction );
+        actions.add ( findProductByIdAction );
+        actions.add ( changeProductNameAction );
+        actions.add ( changeProductPriceAction );
+        actions.add ( deleteProductAction );
+        actions.add ( exitAction );
+        return new ConsoleUi ( actions );
     }
 }

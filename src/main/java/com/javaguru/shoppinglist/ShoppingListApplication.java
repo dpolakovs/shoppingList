@@ -1,7 +1,7 @@
 package com.javaguru.shoppinglist;
 
+import com.javaguru.shoppinglist.config.AppConfig;
 import com.javaguru.shoppinglist.console.ConsoleUi;
-import config.AppConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

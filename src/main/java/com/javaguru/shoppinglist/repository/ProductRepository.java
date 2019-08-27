@@ -10,7 +10,7 @@ public interface ProductRepository {
 
     void update(Product product);
 
-    Optional<Product> findTaskById(Long id);
+    Optional<Product> findProductById(Long id);
 
     void delete(Long id);
 

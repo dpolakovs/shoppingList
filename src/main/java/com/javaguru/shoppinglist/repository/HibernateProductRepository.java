@@ -25,26 +25,26 @@ public class HibernateProductRepository implements ProductRepository {
 
     @Override
     public Product save(Product product) {
-        sessionFactory.getCurrentSession().save(product);
+        sessionFactory.getCurrentSession ().save ( product );
         return product;
     }
 
     @Override
     public void update(Product product) {
-        sessionFactory.getCurrentSession().update(product);
+        sessionFactory.getCurrentSession ().update ( product );
     }
 
     @Override
-    public Optional<Product> findTaskById(Long id) {
-        Product product = (Product) sessionFactory.getCurrentSession().createCriteria(Product.class)
-                .add( Restrictions.eq("id", id))
-                .uniqueResult();
-        return Optional.ofNullable(product);
+    public Optional<Product> findProductById(Long id) {
+        Product product = (Product) sessionFactory.getCurrentSession ().createCriteria ( Product.class )
+                .add ( Restrictions.eq ( "id" , id ) )
+                .uniqueResult ();
+        return Optional.ofNullable ( product );
     }
 
     @Override
     public void delete(Long id) {
-        sessionFactory.getCurrentSession().delete(id);
+        sessionFactory.getCurrentSession ().delete ( id );
     }
 
     @Override
@@ -52,13 +52,13 @@ public class HibernateProductRepository implements ProductRepository {
         String query = "select case when count(*)> 0 " +
                 "then true else false end " +
                 "from Task t where t.name='" + name + "'";
-        return (boolean) sessionFactory.getCurrentSession().createQuery(query)
-                .setMaxResults(1)
-                .uniqueResult();
+        return (boolean) sessionFactory.getCurrentSession ().createQuery ( query )
+                .setMaxResults ( 1 )
+                .uniqueResult ();
     }
 
     public List<Product> findAll() {
-        return sessionFactory.getCurrentSession().createCriteria(Product.class)
-                .list();
-}
+        return sessionFactory.getCurrentSession ().createCriteria ( Product.class )
+                .list ();
+    }
 }
