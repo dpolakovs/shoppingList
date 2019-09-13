@@ -23,7 +23,6 @@ public class HibernateProductRepository implements ProductRepository {
         this.sessionFactory = sessionFactory;
     }
 
-    @Override
     public Product save(Product product) {
         sessionFactory.getCurrentSession ().save ( product );
         return product;
@@ -41,7 +40,6 @@ public class HibernateProductRepository implements ProductRepository {
                 .uniqueResult ();
         return Optional.ofNullable ( product );
     }
-
     @Override
     public void delete(Long id) {
         sessionFactory.getCurrentSession ().delete ( id );
@@ -57,6 +55,7 @@ public class HibernateProductRepository implements ProductRepository {
                 .uniqueResult ();
     }
 
+    @Override
     public List<Product> findAll() {
         return sessionFactory.getCurrentSession ().createCriteria ( Product.class )
                 .list ();

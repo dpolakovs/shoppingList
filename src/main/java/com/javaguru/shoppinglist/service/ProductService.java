@@ -1,22 +1,23 @@
 package com.javaguru.shoppinglist.service;
 
 import com.javaguru.shoppinglist.domain.Product;
-import com.javaguru.shoppinglist.repository.HibernateProductRepository;
+import com.javaguru.shoppinglist.repository.ProductRepository;
 import com.javaguru.shoppinglist.service.validation.ProductValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Component
 public class ProductService {
 
-    public HibernateProductRepository repository;
+    public ProductRepository repository;
     public ProductValidationService validationService;
 
     @Autowired
-    public ProductService(HibernateProductRepository repository , ProductValidationService validationService) {
+    public ProductService(ProductRepository repository , ProductValidationService validationService) {
         this.repository = repository;
         this.validationService = validationService;
     }
@@ -39,5 +40,9 @@ public class ProductService {
     public Product findById(Long id) {
         return repository.findProductById ( id )
                 .orElseThrow ( () -> new NoSuchElementException ( "Product not found, id: " + id ) );
+    }
+
+    public List<Product> findAll(){
+        return repository.findAll ();
     }
 }
