@@ -1,5 +1,5 @@
 CREATE SCHEMA IF NOT EXISTS shoppingList DEFAULT CHARACTER SET utf8 ;
-USE mysql;
+USE shoppingList;
 
 CREATE TABLE IF NOT EXISTS products (
                                      id BIGINT NOT NULL AUTO_INCREMENT,

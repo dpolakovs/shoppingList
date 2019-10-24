@@ -28,4 +28,8 @@ public class ChangeProductPriceAction implements Action {
         productService.update ( product );
         System.out.println ( "Price was changed! Actual price is: " + price );
     }
+    @Override
+    public String toString() {
+        return ACTION_NAME;
+    }
 }

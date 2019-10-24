@@ -19,6 +19,7 @@ public class Product {
     @Column(name = "price")
     private BigDecimal price;
     @Column(name = "category")
+    @Enumerated(value = EnumType.STRING)
     private ProductCategory category;
     @Column(name = "discount")
     private BigDecimal discount;

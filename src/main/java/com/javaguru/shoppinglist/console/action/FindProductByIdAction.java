@@ -8,8 +8,7 @@ import java.util.Scanner;
 
 @Component
 public class FindProductByIdAction implements Action {
-    private static final String ACTION_NAME = "Create Product";
-
+    private static final String ACTION_NAME = "Find Product By Id";
     private final ProductService productService;
 
     public FindProductByIdAction(ProductService productService) {

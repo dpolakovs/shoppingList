@@ -23,10 +23,9 @@ public class ProductService {
     }
 
     @Transactional
-    public Long createProduct(Product product) {
+    public Product createProduct(Product product) {
         validationService.validate ( product );
-        Product createdProduct = repository.save ( product );
-        return createdProduct.getId ();
+        return repository.save ( product );
     }
 
     public void delete(Long id) {

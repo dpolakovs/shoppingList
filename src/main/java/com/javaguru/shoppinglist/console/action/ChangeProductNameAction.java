@@ -27,4 +27,8 @@ public class ChangeProductNameAction implements Action {
         productService.update ( product );
         System.out.println ( "Name was changed! Actual name is: " + name );
     }
+    @Override
+    public String toString() {
+        return ACTION_NAME;
+    }
 }
