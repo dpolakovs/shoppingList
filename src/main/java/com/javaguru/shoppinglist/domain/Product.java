@@ -2,16 +2,28 @@ package com.javaguru.shoppinglist.domain;
 
 import com.javaguru.shoppinglist.service.enums.ProductCategory;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@Entity
+@Table(name = "products")
 public class Product {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "price")
     private BigDecimal price;
+    @Column(name = "category")
+    @Enumerated(value = EnumType.STRING)
     private ProductCategory category;
+    @Column(name = "discount")
     private BigDecimal discount;
+    @Column(name = "description")
     private String description;
 
     public Long getId() {
@@ -63,37 +75,37 @@ public class Product {
     }
 
     public BigDecimal priceWithDiscount() {
-        return price.subtract(getPrice().multiply(getDiscount()).divide(BigDecimal.valueOf(100)));
+        return price.subtract ( getPrice ().multiply ( getDiscount () ).divide ( BigDecimal.valueOf ( 100 ) ) );
     }
 
     public void printInformation() {
-        System.out.println("Product id - " + id);
-        System.out.println("Name of product - " + name);
-        System.out.println("Product category - " + category);
-        System.out.println("Regular price of product = " + price + " EUR");
-        System.out.println("Description: " + description);
-        if ((discount.compareTo(BigDecimal.valueOf(1)) > 0)) {
-            System.out.println("Discount on product = " + discount + " %");
-            System.out.println("Price with discount = " + priceWithDiscount() + " EUR");
+        System.out.println ( "Product id - " + id );
+        System.out.println ( "Name of product - " + name );
+        System.out.println ( "Product category - " + category );
+        System.out.println ( "Regular price of product = " + price + " EUR" );
+        System.out.println ( "Description: " + description );
+        if ((discount.compareTo ( BigDecimal.valueOf ( 1 ) ) > 0)) {
+            System.out.println ( "Discount on product = " + discount + " %" );
+            System.out.println ( "Price with discount = " + priceWithDiscount () + " EUR" );
         }
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass () != o.getClass ()) return false;
         Product product = (Product) o;
-        return Objects.equals(id, product.id) &&
-                Objects.equals(name, product.name) &&
-                Objects.equals(price, product.price) &&
+        return Objects.equals ( id , product.id ) &&
+                Objects.equals ( name , product.name ) &&
+                Objects.equals ( price , product.price ) &&
                 category == product.category &&
-                Objects.equals(discount, product.discount) &&
-                Objects.equals(description, product.description);
+                Objects.equals ( discount , product.discount ) &&
+                Objects.equals ( description , product.description );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, price, category, discount, description);
+        return Objects.hash ( id , name , price , category , discount , description );
     }
 
     @Override
