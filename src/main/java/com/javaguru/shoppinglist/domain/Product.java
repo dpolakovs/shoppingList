@@ -14,7 +14,7 @@ public class Product {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "name")
+    @Column(name = "name", unique = true, nullable = false)
     private String name;
     @Column(name = "price")
     private BigDecimal price;
@@ -25,6 +25,16 @@ public class Product {
     private BigDecimal discount;
     @Column(name = "description")
     private String description;
+    @Column(name = "shoppingCart_id")
+    private Long shoppingCartId;
+
+    public Long getShoppingCartId() {
+        return shoppingCartId;
+    }
+
+    public void setShoppingCartId(Long shoppingCartId) {
+        this.shoppingCartId = shoppingCartId;
+    }
 
     public Long getId() {
         return id;
@@ -84,6 +94,7 @@ public class Product {
         System.out.println ( "Product category - " + category );
         System.out.println ( "Regular price of product = " + price + " EUR" );
         System.out.println ( "Description: " + description );
+        System.out.println ("Shopping cart id = "+ shoppingCartId);
         if ((discount.compareTo ( BigDecimal.valueOf ( 1 ) ) > 0)) {
             System.out.println ( "Discount on product = " + discount + " %" );
             System.out.println ( "Price with discount = " + priceWithDiscount () + " EUR" );
@@ -100,12 +111,13 @@ public class Product {
                 Objects.equals ( price , product.price ) &&
                 category == product.category &&
                 Objects.equals ( discount , product.discount ) &&
-                Objects.equals ( description , product.description );
+                Objects.equals ( description , product.description ) &&
+                Objects.equals(shoppingCartId, product.shoppingCartId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash ( id , name , price , category , discount , description );
+        return Objects.hash ( id , name , price , category , discount , description, shoppingCartId );
     }
 
     @Override
@@ -117,6 +129,7 @@ public class Product {
                 ", category=" + category +
                 ", discount=" + discount +
                 ", description='" + description + '\'' +
+                ", shoppingCartId='" + shoppingCartId + '\'' +
                 '}';
     }
 }

@@ -10,27 +10,22 @@ import java.util.List;
 
 @Configuration
 class ConsoleUiConfiguration {
-    private final Action createProductAction;
-    private final Action findProductByIdAction;
-    private final Action changeProductNameAction;
-    private final Action changeProductPriceAction;
-    private final Action deleteProductAction;
-    private final Action exitAction;
-
     @Autowired
-    public ConsoleUiConfiguration(Action createProductAction ,
-                                  Action findProductByIdAction ,
-                                  Action changeProductNameAction ,
-                                  Action changeProductPriceAction ,
-                                  Action deleteProductAction ,
-                                  Action exitAction) {
-        this.createProductAction = createProductAction;
-        this.findProductByIdAction = findProductByIdAction;
-        this.changeProductNameAction = changeProductNameAction;
-        this.changeProductPriceAction = changeProductPriceAction;
-        this.deleteProductAction = deleteProductAction;
-        this.exitAction = exitAction;
-    }
+    private Action createProductAction;
+    @Autowired
+    private Action findProductByIdAction;
+    @Autowired
+    private  Action changeProductNameAction;
+    @Autowired
+    private  Action changeProductPriceAction;
+    @Autowired
+    private  Action deleteProductAction;
+    @Autowired
+    private  Action exitAction;
+    @Autowired
+    private Action createShoppingCartAction;
+    @Autowired
+    private Action assignProductAction;
 
 
     @Bean
@@ -41,6 +36,8 @@ class ConsoleUiConfiguration {
         actions.add ( changeProductNameAction );
         actions.add ( changeProductPriceAction );
         actions.add ( deleteProductAction );
+        actions.add (createShoppingCartAction);
+        actions.add(assignProductAction);
         actions.add ( exitAction );
         return new ConsoleUi ( actions );
     }
