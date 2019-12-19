@@ -8,10 +8,21 @@ CREATE TABLE IF NOT EXISTS products (
                                         price DECIMAL NOT NULL,
                                         category VARCHAR(100) NOT NULL,
                                         discount DECIMAL NOT NULL,
-                                    
+                                        user_id BIGINT NULL,
                                         created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                                         PRIMARY KEY (id)
 )
     ENGINE = InnoDB
     AUTO_INCREMENT = 1002;
 
+CREATE TABLE IF NOT EXISTS users (
+                                     id BIGINT NOT NULL AUTO_INCREMENT,
+                                     login VARCHAR(100) NOT NULL,
+                                     password VARCHAR(100) NOT NULL,
+                                     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                                     PRIMARY KEY (id)
+)
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 1002;
+
+ALTER TABLE products ADD CONSTRAINT user_products_fk FOREIGN KEY (user_id) REFERENCES users(id);
