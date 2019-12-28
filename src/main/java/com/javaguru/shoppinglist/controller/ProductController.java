@@ -32,8 +32,8 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ProductDTO findProductById(@PathVariable("id") Long id) {
-        Product product = productService.findById (id);
-        return new ProductDTO (product.getId(), product.getName(), product.getDescription(), product.getCategory(), product.getDiscount(), product.getPrice ());
+        return productService.findById (id);
+        //return new ProductDTO (product.getId(), product.getName(), product.getDescription(), product.getCategory(), product.getDiscount(), product.getPrice ());
     }
 
     @DeleteMapping("/{id}")

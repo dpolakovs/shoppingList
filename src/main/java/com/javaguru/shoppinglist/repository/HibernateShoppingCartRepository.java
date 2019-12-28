@@ -2,6 +2,7 @@ package com.javaguru.shoppinglist.repository;
 
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.domain.ShoppingCart;
+import com.javaguru.shoppinglist.dto.ShoppingCartDTO;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -29,8 +29,11 @@ public class ShoppingCartController {
         service.createCart(dto);
         return ResponseEntity.ok(cart);
     }
-
-
+    @GetMapping("/{id}")
+    public ShoppingCartDTO findCartById(@PathVariable("id") Long Id){
+        return service.findCartById ( Id );
+       // return new ShoppingCartDTO ( shoppingCart.getId (), shoppingCart.getLogin (), shoppingCart.getPassword () );
+    }
 
     @GetMapping("/getAll")
     public List<ShoppingCartDTO> findAll(){

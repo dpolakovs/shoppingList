@@ -21,7 +21,11 @@ public class ShoppingCartDTO {
         this.products = products;
     }
 
+    public ShoppingCartDTO(Long id , String login , String password) {
+    }
+
     public ShoppingCartDTO() {
+
     }
 
     public void setId(Long id) {

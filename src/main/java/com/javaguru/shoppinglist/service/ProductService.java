@@ -41,9 +41,10 @@ public class ProductService {
         repository.update(product);
     }
 
-    public Product findById(Long id) {
-        return repository.findProductById ( id )
-                .orElseThrow ( () -> new NoSuchElementException ( "Product not found, id: " + id ) );
+    public ProductDTO findById(Long id) {
+        return repository.findProductById(id)
+                .map(converter::convert)
+                .orElseThrow(() -> new IllegalArgumentException("Product not found by id" + id));
     }
 
     public List<ProductDTO> findAll() {

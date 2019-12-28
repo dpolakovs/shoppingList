@@ -1,6 +1,7 @@
 package com.javaguru.shoppinglist.repository;
 
 import com.javaguru.shoppinglist.domain.Product;
+import com.javaguru.shoppinglist.dto.ProductDTO;
 
 import java.util.List;
 import java.util.Optional;

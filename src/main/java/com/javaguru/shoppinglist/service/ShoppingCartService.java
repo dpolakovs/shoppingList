@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -39,7 +40,11 @@ public class ShoppingCartService {
         ShoppingCart createdCart = repository.save(cart);
         return createdCart.getId();
     }
-
+    public ShoppingCartDTO findCartById(Long id) {
+        return repository.findCartById ( id )
+                .map(converter::convert)
+                .orElseThrow ( () -> new NoSuchElementException ( "ShoppingCart not found, id: " + id ) );
+    }
     public void update(ShoppingCartDTO dto) {
         ShoppingCart cart = converter.convert(dto);
         repository.update(cart);
