@@ -41,8 +41,9 @@ public class HibernateProductRepository implements ProductRepository {
         return Optional.ofNullable ( product );
     }
     @Override
-    public void delete(Long id) {
-        sessionFactory.getCurrentSession ().delete ( id );
+    public void deleteById(Long id) {
+        Product product = (Product) sessionFactory.getCurrentSession().load(Product.class, id);
+        sessionFactory.getCurrentSession().delete(product);
     }
 
     @Override
@@ -57,7 +58,6 @@ public class HibernateProductRepository implements ProductRepository {
 
     @Override
     public List<Product> findAll() {
-        return sessionFactory.getCurrentSession ().createCriteria ( Product.class )
-                .list ();
+        return sessionFactory.getCurrentSession ().createCriteria ( Product.class ).list ();
     }
 }

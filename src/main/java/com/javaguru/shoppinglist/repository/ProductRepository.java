@@ -11,13 +11,11 @@ public interface ProductRepository {
 
     Optional<Product> findProductById(Long id);
 
-    void delete(Long id);
-
     Product save(Product product);
+
+    void deleteById(Long id);
 
     boolean existsByName(String name);
 
     List<Product> findAll();
-
-
 }

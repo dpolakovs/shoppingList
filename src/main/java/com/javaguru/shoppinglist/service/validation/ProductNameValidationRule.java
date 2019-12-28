@@ -1,6 +1,7 @@
 package com.javaguru.shoppinglist.service.validation;
 
 import com.javaguru.shoppinglist.domain.Product;
+import com.javaguru.shoppinglist.dto.ProductDTO;
 import com.javaguru.shoppinglist.repository.ProductRepository;
 import org.springframework.stereotype.Component;
 
@@ -14,19 +15,19 @@ public class ProductNameValidationRule implements ProductValidationRule {
     }
 
     @Override
-    public void validate(Product product) {
-        checkNotNull ( product );
-        nameLengthValidation ( product.getName () );
-        startsAndEndsWithValidation ( product.getName () );
-        spacesCountValidation ( product.getName () );
-        correctUseOfSpacesValidation ( product.getName () );
-        invalidCharactersValidation ( product.getName () );
-        uniqueNameValidation ( product );
+    public void validate(ProductDTO productDto) {
+        checkNotNull ( productDto );
+        nameLengthValidation ( productDto.getName () );
+        startsAndEndsWithValidation ( productDto.getName () );
+        spacesCountValidation ( productDto.getName () );
+        correctUseOfSpacesValidation ( productDto.getName () );
+        invalidCharactersValidation ( productDto.getName () );
+        uniqueNameValidation ( productDto );
     }
 
     @Override
-    public void checkNotNull(Product product) {
-        if (product.getName () == null) {
+    public void checkNotNull(ProductDTO productDto) {
+        if (productDto.getName () == null) {
             throw new ProductValidationException ( "Product name must not be null!" );
         }
     }
@@ -95,8 +96,8 @@ public class ProductNameValidationRule implements ProductValidationRule {
         }
     }
 
-    private void uniqueNameValidation(Product product) {
-        if (repository.existsByName ( product.getName () )) {
+    private void uniqueNameValidation(ProductDTO productDto) {
+        if (repository.existsByName ( productDto.getName () )) {
             throw new ProductValidationException ( "Error! Product name should be unique" );
         }
     }

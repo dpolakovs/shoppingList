@@ -12,6 +12,7 @@ public class ShoppingCart {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     @Column(name = "login", nullable = false, unique = true)
     private String login;
     @Column(name = "password", nullable = false)

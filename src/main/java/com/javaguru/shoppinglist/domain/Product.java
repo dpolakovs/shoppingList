@@ -6,6 +6,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import static java.math.BigDecimal.valueOf;
+
 @Entity
 @Table(name = "products")
 public class Product {
@@ -14,6 +16,7 @@ public class Product {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     @Column(name = "name", unique = true, nullable = false)
     private String name;
     @Column(name = "price")
@@ -26,6 +29,7 @@ public class Product {
     @Column(name = "description")
     private String description;
     @Column(name = "shoppingCart_id")
+
     private Long shoppingCartId;
 
     public Long getShoppingCartId() {
@@ -85,8 +89,7 @@ public class Product {
     }
 
     public BigDecimal priceWithDiscount() {
-        return price.subtract ( getPrice ().multiply ( getDiscount () ).divide ( BigDecimal.valueOf ( 100 ) ) );
-    }
+        return price.subtract(getPrice().multiply(getDiscount()).divide(valueOf(100)));    }
 
     public void printInformation() {
         System.out.println ( "Product id - " + id );
@@ -95,7 +98,7 @@ public class Product {
         System.out.println ( "Regular price of product = " + price + " EUR" );
         System.out.println ( "Description: " + description );
         System.out.println ("Shopping cart id = "+ shoppingCartId);
-        if ((discount.compareTo ( BigDecimal.valueOf ( 1 ) ) > 0)) {
+        if ((discount.compareTo (valueOf ( 1 ) ) > 0)) {
             System.out.println ( "Discount on product = " + discount + " %" );
             System.out.println ( "Price with discount = " + priceWithDiscount () + " EUR" );
         }

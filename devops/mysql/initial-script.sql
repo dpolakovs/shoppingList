@@ -15,14 +15,14 @@ CREATE TABLE IF NOT EXISTS products (
     ENGINE = InnoDB
     AUTO_INCREMENT = 1002;
 
-CREATE TABLE IF NOT EXISTS users (
-                                     id BIGINT NOT NULL AUTO_INCREMENT,
-                                     login VARCHAR(100) NOT NULL,
-                                     password VARCHAR(100) NOT NULL,
-                                     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                                     PRIMARY KEY (id)
+CREATE TABLE IF NOT EXISTS shoppingCarts (
+                                             id BIGINT NOT NULL AUTO_INCREMENT,
+                                             login VARCHAR(100) NOT NULL,
+                                             password VARCHAR(100) NOT NULL,
+                                             created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                                             PRIMARY KEY (id)
 )
     ENGINE = InnoDB
     AUTO_INCREMENT = 1002;
 
-ALTER TABLE products ADD CONSTRAINT user_products_fk FOREIGN KEY (user_id) REFERENCES users(id);
+ALTER TABLE products ADD CONSTRAINT shoppingCarts_products_fk FOREIGN KEY (shoppingCart_id) REFERENCES shoppingCarts(id)
