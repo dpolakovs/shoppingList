@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/carts")
+@RequestMapping("/api/v1/carts")
 public class ShoppingCartController {
 
     private final ShoppingCartService service;
@@ -25,17 +25,16 @@ public class ShoppingCartController {
     public ResponseEntity<ShoppingCart> create(@RequestBody ShoppingCartDTO dto) {
         ShoppingCart cart = new ShoppingCart();
         cart.setLogin (dto.getLogin ());
-        cart.setPassword (dto.getPassword ());
+        cart.setDescription (dto.getDescription ());
         service.createCart(dto);
         return ResponseEntity.ok(cart);
     }
     @GetMapping("/{id}")
     public ShoppingCartDTO findCartById(@PathVariable("id") Long Id){
         return service.findCartById ( Id );
-       // return new ShoppingCartDTO ( shoppingCart.getId (), shoppingCart.getLogin (), shoppingCart.getPassword () );
     }
 
-    @GetMapping("/getAll")
+    @GetMapping
     public List<ShoppingCartDTO> findAll(){
         return service.findAll();
     }
@@ -50,8 +49,5 @@ public class ShoppingCartController {
                        @RequestBody ProductDTO dto, @RequestBody ShoppingCartDTO dtocart) {
         service.saveProductToList(dto, dtocart);
     }
-
-
-
 
 }

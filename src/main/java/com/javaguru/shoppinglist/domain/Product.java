@@ -28,7 +28,7 @@ public class Product {
     private BigDecimal discount;
     @Column(name = "description")
     private String description;
-    @Column(name = "shoppingCart_id")
+    @Column(name = "shoppingCarts_id")
 
     private Long shoppingCartId;
 

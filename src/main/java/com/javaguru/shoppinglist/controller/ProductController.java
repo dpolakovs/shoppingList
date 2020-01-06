@@ -3,13 +3,15 @@ package com.javaguru.shoppinglist.controller;
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.dto.ProductDTO;
 import com.javaguru.shoppinglist.service.ProductService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/v1/products")
 public class ProductController {
 
     private final ProductService productService;
@@ -33,20 +35,26 @@ public class ProductController {
     @GetMapping("/{id}")
     public ProductDTO findProductById(@PathVariable("id") Long id) {
         return productService.findById (id);
-        //return new ProductDTO (product.getId(), product.getName(), product.getDescription(), product.getCategory(), product.getDiscount(), product.getPrice ());
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("id") Long id){
         productService.delete ( id );
     }
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable("id") Long id, @RequestBody ProductDTO productDTO){
         productService.update(productDTO);
     }
-    @GetMapping("/findAll")
+    @GetMapping
     public List<ProductDTO> findAll() {
         return productService.findAll();
+    }
+
+    @ExceptionHandler(NoSuchElementException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public void handleNoSuchElementException(NoSuchElementException ex) {
     }
 }

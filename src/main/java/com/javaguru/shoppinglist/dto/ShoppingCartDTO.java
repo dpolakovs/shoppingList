@@ -11,17 +11,17 @@ public class ShoppingCartDTO {
 
     private Long id;
     private String login;
-    private String password;
+    private String description;
     private Set<Product> products;
 
-    public ShoppingCartDTO(Long id , String login , String password , Set<Product> products) {
+    public ShoppingCartDTO(Long id , String login , String description , Set<Product> products) {
         this.id = id;
         this.login = login;
-        this.password = password;
+        this.description = description;
         this.products = products;
     }
 
-    public ShoppingCartDTO(Long id , String login , String password) {
+    public ShoppingCartDTO(Long id , String login , String description) {
     }
 
     public ShoppingCartDTO() {
@@ -44,12 +44,12 @@ public class ShoppingCartDTO {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setDescription(String password) {
+        this.description = password;
     }
 
     public Set<Product> getProducts() {
@@ -67,12 +67,12 @@ public class ShoppingCartDTO {
         ShoppingCartDTO that = (ShoppingCartDTO) o;
         return Objects.equals ( id , that.id ) &&
                 Objects.equals ( login , that.login ) &&
-                Objects.equals ( password , that.password );
+                Objects.equals ( description , that.description );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash ( id , login , password );
+        return Objects.hash ( id , login , description );
     }
 
     @Override
@@ -81,7 +81,7 @@ public class ShoppingCartDTO {
         return "ShoppingCartDTO{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

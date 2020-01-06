@@ -10,7 +10,7 @@ public class ShoppingCartConverter {
         ShoppingCart cart = new ShoppingCart();
         cart.setId(dto.getId());
         cart.setLogin (dto.getLogin ());
-        cart.setPassword (dto.getPassword ());
+        cart.setDescription (dto.getDescription ());
         cart.setProducts (dto.getProducts ());
         return cart;
     }
@@ -19,7 +19,7 @@ public class ShoppingCartConverter {
         ShoppingCartDTO dto = new ShoppingCartDTO ();
         dto.setId(cart.getId());
         dto.setLogin (cart.getLogin ());
-        dto.setPassword (dto.getPassword ());
+        dto.setDescription (dto.getDescription ());
         dto.setProducts (dto.getProducts ());
         return dto;
     }
