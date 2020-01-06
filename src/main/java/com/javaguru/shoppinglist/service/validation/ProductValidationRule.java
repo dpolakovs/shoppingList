@@ -1,9 +1,10 @@
 package com.javaguru.shoppinglist.service.validation;
 
 import com.javaguru.shoppinglist.domain.Product;
+import com.javaguru.shoppinglist.dto.ProductDTO;
 
 public interface ProductValidationRule {
-    void validate(Product product);
+    void validate(ProductDTO productDto);
 
-    void checkNotNull(Product product);
+    void checkNotNull(ProductDTO productDto);
 }

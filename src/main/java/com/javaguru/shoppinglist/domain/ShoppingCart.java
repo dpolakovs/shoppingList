@@ -12,12 +12,13 @@ public class ShoppingCart {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     @Column(name = "login", nullable = false, unique = true)
     private String login;
-    @Column(name = "password", nullable = false)
-    private String password;
+    @Column(name = "description", nullable = false)
+    private String description;
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shoppingCart_id")
+    @JoinColumn(name = "shoppingCarts_id")
     private Set<Product> products;
 
     public Long getId() {
@@ -36,12 +37,12 @@ public class ShoppingCart {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Set<Product> getProducts() {
@@ -59,13 +60,13 @@ public class ShoppingCart {
         ShoppingCart shoppingCart = (ShoppingCart) o;
         return Objects.equals(id, shoppingCart.id) &&
                 Objects.equals(login, shoppingCart.login) &&
-                Objects.equals(password, shoppingCart.password) &&
+                Objects.equals(description, shoppingCart.description) &&
                 Objects.equals(products, shoppingCart.products);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, password, products);
+        return Objects.hash(id, login, description, products);
     }
 
     @Override
@@ -73,7 +74,7 @@ public class ShoppingCart {
         return "ShoppingCart{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
-                ", password=*******" +
+                ", description=" + description +
                 ", products=" + products +
                 '}';
     }
